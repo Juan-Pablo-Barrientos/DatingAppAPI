@@ -18,6 +18,7 @@ public class ValuesController : ControllerBase
             _logger = logger;
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public async Task<IActionResult> GetValues()
     {
