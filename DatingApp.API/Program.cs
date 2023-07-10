@@ -24,6 +24,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddCors();
+var cloudinarySettings = new CloudinarySettings();
+builder.Configuration.Bind("CloudinarySettings", cloudinarySettings);
+builder.Services.AddSingleton(cloudinarySettings);
 builder.Services.AddScoped<IDatingRepository, DatingRepository>();
 builder.Services.AddTransient<Seed>();
 builder.Services.AddControllers().AddJsonOptions(x =>
